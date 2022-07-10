@@ -1,0 +1,398 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>计算机网络（应用层篇） | Lotus' home</title><meta name="keywords" content="http"><meta name="author" content="JMH"><meta name="copyright" content="JMH"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="什么是Http？Http是超文本传输协议的缩写（Hyper Text Transfer Protocol，HTTP）是一个简单的请求-响应协议，它通常运行在TCP之上。在1990年，HTTP就成为WWW的支撑协议。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。 并且，HTTP 是一个无状态（stateless）协议，也就是说服务器不维护任何有关客户端过去所发请求的消息。这其实是一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机网络（应用层篇）">
+<meta property="og:url" content="https://nevermoreaken.github.io/2022/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%AF%87/index.html">
+<meta property="og:site_name" content="Lotus&#39; home">
+<meta property="og:description" content="什么是Http？Http是超文本传输协议的缩写（Hyper Text Transfer Protocol，HTTP）是一个简单的请求-响应协议，它通常运行在TCP之上。在1990年，HTTP就成为WWW的支撑协议。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。 并且，HTTP 是一个无状态（stateless）协议，也就是说服务器不维护任何有关客户端过去所发请求的消息。这其实是一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg">
+<meta property="article:published_time" content="2022-07-10T14:31:46.000Z">
+<meta property="article:modified_time" content="2022-07-10T17:57:47.563Z">
+<meta property="article:author" content="JMH">
+<meta property="article:tag" content="http">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="https://nevermoreaken.github.io/2022/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%AF%87/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":null},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计算机网络（应用层篇）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-11 01:57:47'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/25636a15e267c37572f31b4188bf1ee.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Lotus' home</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 链接</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友情链接</span></a></li><li><a class="site-page child" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计算机网络（应用层篇）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-10T14:31:46.000Z" title="发表于 2022-07-10 22:31:46">2022-07-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-10T17:57:47.563Z" title="更新于 2022-07-11 01:57:47">2022-07-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Java%E9%9D%A2%E8%AF%95%E5%BD%92%E6%A1%A3/">Java面试归档</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计算机网络（应用层篇）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="什么是Http？"><a href="#什么是Http？" class="headerlink" title="什么是Http？"></a>什么是Http？</h1><p>Http是超文本传输协议的缩写（Hyper Text Transfer Protocol，HTTP）是一个简单的请求-响应协议，它通常运行在TCP之上。在1990年，HTTP就成为WWW的支撑协议。它指定了客户端可能发送给服务器什么样的消息以及得到什么样的响应。</p>
+<p>并且，HTTP 是一个无状态（stateless）协议，也就是说服务器不维护任何有关客户端过去所发请求的消息。这其实是一种懒政，有状态协议会更加复杂，需要维护状态（历史信息），而且如果客户或服务器失效，会产生状态的不一致，解决这种不一致的代价更高。</p>
+<h1 id="HTTP-协议通信过程"><a href="#HTTP-协议通信过程" class="headerlink" title="HTTP 协议通信过程"></a>HTTP 协议通信过程</h1><p>HTTP 是应用层协议，它以 TCP（传输层）作为底层协议，默认端口为 80. 通信过程主要如下：</p>
+<ol>
+<li>服务器在 80 端口等待客户的请求。</li>
+<li>浏览器发起到服务器的 TCP 连接（创建套接字 Socket）。</li>
+<li>服务器接收来自浏览器的 TCP 连接。</li>
+<li>浏览器（HTTP 客户端）与 Web 服务器（HTTP 服务器）交换 HTTP 消息。</li>
+<li>关闭 TCP 连接</li>
+</ol>
+<h1 id="HTTPS"><a href="#HTTPS" class="headerlink" title="HTTPS"></a>HTTPS</h1><hr>
+<h2 id="背景–HTTP的缺点"><a href="#背景–HTTP的缺点" class="headerlink" title="背景–HTTP的缺点"></a>背景–HTTP的缺点</h2><blockquote>
+<p>作者：苏莉安<br>链接：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/68302462/answer/269474847">https://www.zhihu.com/question/68302462/answer/269474847</a><br>来源：知乎  </p>
+</blockquote>
+<p>HTTP的明文传输带来的问题是无法防止中间人截获、盗取和篡改信息，从你的[路由器]、运营商到对方服务器，中间每一步都是明文。这里面可下手的地方太多了。</p>
+<p>比如很多地方电信运营商就擅自给用户的网页插入浮动窗口广告，甚至影响正常浏览，不知情的用户还骂网站。其实这就是HTTP的明文特性导致的天然漏洞，对HTTPS网站则束手无策。因为后者只有用户和服务器能看到真实请求数据，对所有中间环节都加了密，自然也就无从篡改。</p>
+<p>是不是好多人有微博账号莫名关注或点赞某些垃圾僵尸粉、营销号或者取关好友？在微博没有全站HTTPS化之前这种现象普遍存在。有人说是官方恶意给大号涨粉（官方肯定不承认，底下的人会不会收钱办事很难说），但各种证据表明绝大多数都是中间有人动了手脚，比如前面说的与运营商合作的营销公司。他们可以通过截获请求盗取并伪造你的身份信息来关注一票僵尸号或给某些营销微博点赞。方法也简单，把你本次成功访问微博的cookie存下来，直接用这个cookie发送关注别人的请求就行。</p>
+<p>这种情况根本无需窃取你密码，也就无所谓密码大量泄露了。</p>
+<p>对黑客和黑产从业者来说，除非你是个有影响力的大V或高价值账户才值得完全盗走。否则对千千万万普通用户而言，在无感知的情况下借用你的身份做一些事才是最有用的。</p>
+<p>而那个「很厉害的黑客，黑了很多计算机」，其实根本用不到HTTP的明文特性就能窃取你的大量信息，因为人家黑的不是传输阶段，而是从起始阶段就下手了。无论你在中间怎么加密，在自己电脑总要有明文吧。</p>
+<p>另外，那些著名的「某某网站几百几千万用户数据泄露」其实只是冰山一角，绝大部分泄露都不会被外界得知。有的跟网站私下交易，有的窃取完数据堵上漏洞就不管了，有的说不定站方从头到尾都没察觉到这件事。更何况网上流传的很多用户账号密码包根本就是在黑产圈内流传了几年连剩余价值都榨干了才出于炫耀或引导舆论的目的被扔出来的……</p>
+<p><del>Tips：比如这篇参考的这篇文章所在的网站就没有使用HTTP加密，跳了好几个垃圾弹窗。可能或是嫌弃办理证书缴费太贵，或是嫌弃拖累网站速度。</del><a href="%5B%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E3%80%81%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E3%80%81%E6%95%A3%E5%88%97%EF%BC%88%E5%93%88%E5%B8%8C%EF%BC%89%E7%AE%97%E6%B3%95%5D(http://www.wjhsh.net/god-of-death-p-8761281.html)">程序猿</a></p>
+<h2 id="HTTPS-的核心—SSL-x2F-TLS协议"><a href="#HTTPS-的核心—SSL-x2F-TLS协议" class="headerlink" title="HTTPS 的核心—SSL&#x2F;TLS协议"></a>HTTPS 的核心—SSL&#x2F;TLS协议</h2><p>HTTPS 之所以能达到较高的安全性要求，就是结合了 SSL&#x2F;TLS 和 TCP 协议，对通信数据进行加密，解决了 HTTP 数据透明的问题。接下来重点介绍一下 SSL&#x2F;TLS 的工作原理。</p>
+<h3 id="SSL-和-TLS-的区别？"><a href="#SSL-和-TLS-的区别？" class="headerlink" title="SSL 和 TLS 的区别？"></a>SSL 和 TLS 的区别？</h3><blockquote>
+<p><strong>SSL 和 TLS 没有太大的区别。</strong>摘自 [javaguide](<a target="_blank" rel="noopener" href="https://javaguide.cn/cs-basics/network/http&https.html#https-%E7%9A%84%E6%A0%B8%E5%BF%83%E2%80%94ssl-tls%E5%8D%8F%E8%AE%AE">HTTP vs HTTPS（应用层） | JavaGuide</a>)</p>
+</blockquote>
+<p>SSL 指安全套接字协议（Secure Sockets Layer），首次发布与 1996 年。SSL 的首次发布其实已经是他的 3.0 版本，SSL 1.0 从未面世，SSL 2.0 则具有较大的缺陷（DROWN 缺陷——Decrypting RSA with Obsolete and Weakened eNcryption）。很快，在 1999 年，SSL 3.0 进一步升级，<strong>新版本被命名为 TLS 1.0</strong>。因此，TLS 是基于 SSL 之上的，但由于习惯叫法，通常把 HTTPS 中的核心加密协议混成为 SSL&#x2F;TLS。</p>
+<h3 id="SSL-x2F-TLS-的工作原理"><a href="#SSL-x2F-TLS-的工作原理" class="headerlink" title="SSL&#x2F;TLS 的工作原理"></a>SSL&#x2F;TLS 的工作原理</h3><p><strong>首先科普知识点：</strong></p>
+<h4 id="散列算法"><a href="#散列算法" class="headerlink" title="散列算法"></a>散列算法</h4><p>散列算法，又称哈希函数，是一种单向算法。在信息安全技术中，<strong>经常需要验证消息的完整性</strong>，散列(Hash)函数提供了这一服务，它对不同长度的输入消息，产生固定长度的输出。这个固定长度的输出称为原输入消息的”散列”或”消息摘要”(Message digest)。<strong>散列算法不算加密算法，因为其结果是不可逆的，既然是不可逆的，那么当然不是用来加密的。</strong></p>
+<p>对某个数据包进行散列算法计算得到一个数字，称这个数值为摘要。</p>
+<ul>
+<li><p>常用散列算法<strong>MD5、SHA1、HMAC</strong></p>
+</li>
+<li><p>一个粗略的应用实例：我有一篇文章，用散列算法加密后为【4f2016c6b934d55bd7120e5d0e62cce3】。因为散列算法是单向的，所以不可能被逆向破解。我把这篇文章连带密文发给你，你拿到这篇文章后用散列算法计算，与密文比对。如果相等，说明文章内容没有被篡改。</p>
+</li>
+</ul>
+<img title="" src="file:///C:/Users/姜鸣鹤/AppData/Roaming/marktext/images/2022-07-10-23-19-44-image.png" alt="" width="412" data-align="center">
+
+<h4 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h4><h5 id="1-对称加密算法"><a href="#1-对称加密算法" class="headerlink" title="1. 对称加密算法"></a>1. 对称加密算法</h5><ul>
+<li><p>特征是收信方和发信方使用相同的密钥，即加密密钥和解密密钥是<strong>相同或等价</strong>的。</p>
+</li>
+<li><p>常用对称加密算法：DES, 3DES, AES。</p>
+</li>
+<li><p><img src="https://javaguide.cn/assets/symmetric-encryption.20454cea.png"></p>
+</li>
+<li><p>特点：运算开销小，但是bob给alice传递唯一密钥时会被中间人攻击造成数据泄露！</p>
+</li>
+</ul>
+<h5 id="2-非对称加密算法"><a href="#2-非对称加密算法" class="headerlink" title="2. 非对称加密算法"></a>2. 非对称加密算法</h5><p>公钥加密算法。其特征是收信方和发信方使用的密钥互不相同，而且几乎不可能从加密密钥推导解密密钥。</p>
+<p>用公钥加密的过程叫<strong>加密</strong></p>
+<p>用私钥解密的过程叫<strong>解密</strong></p>
+<p>用私钥加密的消息称为<strong>签名</strong>，只有拥有私钥的用户可以生成签名</p>
+<p>用公钥解密签名这一步称为<strong>验证签名（验签）</strong>，所有用户都可以验证签名(因为公钥是公开的)</p>
+<p>一旦签名验证成功，根据公私钥数学上的对应关系，就可以知道该消息是唯一拥有私钥的用户发送的，而不是随便一个用户发送的。</p>
+<p>由于私钥是唯一的，因此数字签名可以保证发送者事后不能抵赖对报文的签名。由此，消息的接收者可以通过数字签名，使第三方确信签名人的身份及发出消息的事实。当双方就消息发出与否及其内容出现争论时，数字签名就可成为一个有力的证据。</p>
+<p>常用非对称加密算法：<strong>RSA</strong>, ECC</p>
+<ul>
+<li><p><img src="https://javaguide.cn/assets/public-key-cryptography.22f51898.png"></p>
+</li>
+<li><p> RSA非对称加密算法RSA是基于「大整数分解」这一数学困难问题的公钥密码体制，也就是说，对两个质数相乘容易，而将其合数分解很难。</p>
+</li>
+<li><p>运算开销大，网络传播公钥不怕泄露。但是有漏洞。</p>
+</li>
+</ul>
+<blockquote>
+<p>客户端 C 和服务器 S 想要使用 SSL&#x2F;TLS 通信，由上述 SSL&#x2F;TLS 通信原理，C 需要先知道 S 的公钥，而 S 公钥的唯一获取途径，就是把 S 公钥在网络信道中传输。要注意网络信道通信中有几个前提：</p>
+<ol>
+<li>任何人都可以捕获通信包</li>
+<li>通信包的保密性由发送者设计</li>
+<li>保密算法设计方案默认为公开，而（解密）密钥默认是安全的</li>
+</ol>
+<p>因此，假设 S 公钥不做加密，在信道中传输，那么很有可能存在一个攻击者 A，发送给 C 一个诈包，假装是 S 公钥，其实是诱饵服务器 AS 的公钥。当 C 收获了 AS 的公钥（却以为是 S 的公钥），C 后续就会使用 AS 公钥对数据进行加密，并在公开信道传输，那么 A 将捕获这些加密包，用 AS 的私钥解密，就截获了 C 本要给 S 发送的内容，而 C 和 S 二人全然不知。</p>
+<p>同样的，S 公钥即使做加密，也难以避免这种信任性问题，C 被 AS 拐跑了！</p>
+<p><img src="https://javaguide.cn/assets/attack1.48b62b2e.png"></p>
+</blockquote>
+<h5 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h5><p>我们先思考一下，现实中的签名有什么作用？</p>
+<p><img src="C:\Users\姜鸣鹤\AppData\Roaming\marktext\images\2022-07-10-23-35-37-image.png"></p>
+<p>上图是一个现实中的签名，小明签下了姓名，我们从这份签名中可以知道两件事情：</p>
+<ol>
+<li><p><strong>签名者的身份为小明（通过笔迹鉴定可以确保其他人不能模仿）</strong></p>
+</li>
+<li><p><strong>签名者认可文件内容（小明认可了签名文件所在的这张”纸“数据内容没有被篡改）</strong></p>
+</li>
+</ol>
+<p>这就是数字签名算法需要解决的两个问题。</p>
+<ul>
+<li><p>常用数字加密算法：<strong>RSA签名算法</strong>(包含RSA加密算法+哈希算法（散列）)，DSA, ECDSA。</p>
+</li>
+<li><p>接下来主要介绍RSA签名算法。</p>
+</li>
+</ul>
+<p>刚才说非对称加密，把公钥公开用于他人对数据加密然后发给你，只有用你手上对应的私钥才能将密文解密。其实，<strong>私钥也可用用来加密数据的，对于 RSA 算法，私钥加密的数据只有公钥才能解开</strong>。</p>
+<p>数字签名也是利用了非对称性密钥的特性，但是和公钥加密完全颠倒过来：<strong>仍然公布公钥，但是用你的私钥加密数据，然后把加密的数据公布出去，这就是数字签名</strong>。</p>
+<p>你可能问，这有什么用，公钥可以解开私钥加密，我还加密发出去，不是多此一举吗？</p>
+<p>是的，但是<strong>数字签名的作用本来就不是保证数据的机密性，而是证明你的身份</strong>，证明这些数据确实是由你本人发出的。</p>
+<p>你的私钥加密的数据，只有你的公钥才能解开，那么如果一份加密数据能够被你的公钥解开，不就说明这份数据是你（私钥持有者）本人发布的吗？</p>
+<p>当然，加密数据仅仅是一个签名，签名应该和数据一同发出，至于文件的完整性，我们用散列算法来保证。</p>
+<p>具体流程应该是：</p>
+<p>1、Bob 生成公钥和私钥，然后把公钥公布出去，私钥自己保留。</p>
+<p>2、<strong>先将数据用哈希算法生成摘要，再用私钥加密摘要作为签名，然后将原始数据附带着签名一同发布出去</strong>。</p>
+<p>3、Alice 收到数据和签名，需要检查此份数据是否是 Bob 所发出，于是用 Bob 之前发出的公钥尝试解密签名，将收到的<strong>签名解密后的数据哈希值</strong>和文件<strong>运算后的哈希值</strong>结果作对比，如果完全相同，说明数据没被篡改，且确实由 Bob 发出。</p>
+<p>为什么 Alice 这么肯定呢，毕竟数据和签名是两部分，都可以被掉包呀？原因如下：</p>
+<p>1、如果有人修改了数据，那么 Alice 解密签名之后，对比发现二者哈希值不一致，察觉出异常。</p>
+<p>2、如果有人替换了签名，那么 Alice 用 Bob 的公钥只能解出一串乱码，显然和数据不一致。</p>
+<p>3、<strong>极端情况</strong>：有人篡改了数据，然后将用山寨的公-私钥生成按上述流程和篡改数据制成签名，使得 Alice 的对比无法发现不一致；<strong>也就是说，Alice无法知道，互联网上哪个公钥是真的，谁才是真正私钥的拥有者。</strong></p>
+<p>一旦涉及公钥的发布，接收方就可能收到中间人的假公钥，进行错误的认证，这个问题始终避免不了。</p>
+<p>说来可笑，数字签名就是验证对方身份的一种方式，但是前提是对方的身份必须是真的… 这似乎陷入一个先有鸡还是先有蛋的死循环，<strong>要想确定对方的身份，必须有一个信任的源头，否则的话，再多的流程也只是在转移问题，而不是真正解决问题</strong>。</p>
+<h4 id="公钥数字证书"><a href="#公钥数字证书" class="headerlink" title="公钥数字证书"></a>公钥数字证书</h4><p>为了解决非对称加密公钥传输的信赖性问题，第三方机构应运而生——证书颁发机构（CA，Certificate Authority）。CA 默认是受信任的第三方。CA 会给各个服务器颁发证书，证书存储在服务器上，并附有 CA 的<strong>电子签名</strong>。</p>
+<p><strong>证书其实就是公钥 + 签名，由第三方认证机构颁发</strong>。引入可信任的第三方，是终结信任循环的一种可行方案。</p>
+<p>证书认证的流程大致如下：</p>
+<p>1、Bob 去可信任的认证机构证实本人真实身份，并提供自己的公钥。</p>
+<p>2、CA机构在核实Bob身份后，CA自己也声称一套公钥和私钥，使用私钥将【Bob身份信息及其公钥数据】这一文件内容进行数字签名（哈希运算，私钥加密），并放到数字证书中，该证书就相当于文件数据（Bob身份和公钥）和数字签名的组合体。</p>
+<img src="file:///C:/Users/姜鸣鹤/AppData/Roaming/marktext/images/2022-07-11-01-42-29-image.png" title="" alt="" data-align="center">
+
+<img src="file:///C:/Users/姜鸣鹤/AppData/Roaming/marktext/images/2022-07-11-01-42-48-image.png" title="" alt="" data-align="center">
+
+<p>3、Alice 想跟 Bob 通信，首先向认证机构请求 Bob 的公钥，认证机构会把证书发送给Alice（或直接由小明给alice）。ps：每个人的电脑和手机系统里，默认安装了根证书，里面记载了可以信赖的CA机构信息及其公钥，预装在系统中可以杜绝CA机构公钥被伪造的可能。</p>
+<p>4、Alice 检查签名，将公钥与签名运算，得到哈希值，与文件运算得来的哈希值进行对比。确定该公钥确实由这家认证机构发送，中途未被篡改。</p>
+<p>5、Alice 通过这个公钥加密数据，开始和 Bob 通信。</p>
+<p>PS：以上只是为了说明，证书只需要安装一次，并不需要每次都向认证机构请求；一般是服务器直接给客户端发送证书，而不是认证机构。</p>
+<p>也许有人问，Alice 要想通过数字签名确定证书的有效性，前提是要有该机构的（认证）公钥，这不是又回到刚才的死循环了吗？</p>
+<p>我们安装的正规浏览器中都预存了正规认证机构的证书（包含其公钥），用于确认机构身份，所以说证书的认证是可信的。</p>
+<p>Bob 向机构提供公钥的过程中，需要提供很多个人信息进行身份验证，比较严格，所以说也算是可靠的。</p>
+<p>获得了 Bob 的可信公钥，Alice 和 Bob 之间的通信基于加密算法的保护，是完全无懈可击的。</p>
+<h5 id="再回到最开始的工作原理"><a href="#再回到最开始的工作原理" class="headerlink" title="再回到最开始的工作原理"></a>再回到最开始的工作原理</h5><p><strong>一句话总结：SSL&#x2F;TLS实现—–&gt;（数字证书+RSA密钥交换+对称加密）</strong></p>
+<p>RSA无论是加密还是解密，一般都要比同长度的AES（一种非对称加密算法）慢很多，因此，两端传输一般优先用RSA来加密对称算法的密钥，然后通信双方再通过对称算法密钥来进行大量的信息传输工作。</p>
+<ol>
+<li><p>首先，由接收方创建RSA密钥对，接收方通过网络发送RSA公钥到发送方，同时保存RSA私钥。</p>
+</li>
+<li><p>而对方则用发送方公开的公钥来解密，检验其身份的唯一性。确认发送方身份为该公开公钥的私钥持有者以后，则用双方约定的AES来进行加密。</p>
+</li>
+<li><p>即，先用RSA来加密对称算法的密钥，然后通信双方再通过对称算法密钥来进行大量的信息传输工作。</p>
+</li>
+</ol>
+<p>这里就可以看到私钥加密的作用：认证对方的合法性，任何拥有CA公钥的个体，都可以解开数字签名，来验证信息是否安全可信。**</p>
+<p>这样一来，传统的中间人攻击就几乎没有了生存空间，攻击手段只能由技术缺陷转变为坑蒙拐骗。事实上，这种手段的效果反而更高效，比如我就发现<strong>网上不少下载网站发布的浏览器，不仅包含乱七八糟的导航和收藏网址，还包含一些不正规的认证机构证书。任何人都可以申请证书，这些不正规证书很可能造成安全隐患</strong>。</p>
+<h2 id="HTTP-vs-HTTPS区别"><a href="#HTTP-vs-HTTPS区别" class="headerlink" title="HTTP vs HTTPS区别"></a>HTTP vs HTTPS区别</h2><ul>
+<li><strong>端口号</strong> ：HTTP 默认是 80，HTTPS 默认是 443。</li>
+<li><strong>URL 前缀</strong> ：HTTP 的 URL 前缀是 <code>http://</code>，HTTPS 的 URL 前缀是 <code>https://</code>。</li>
+<li><strong>安全性和资源消耗</strong> ： HTTP 协议运行在 TCP 之上，所有传输的内容都是明文，客户端和服务器端都无法验证对方的身份。HTTPS 是运行在 SSL&#x2F;TLS 之上的 HTTP 协议，SSL&#x2F;TLS 运行在 TCP 之上。所有传输的内容都经过加密，加密采用对称加密，但对称加密的密钥用服务器方的证书进行了非对称加密。所以说，HTTP 安全性没有 HTTPS 高，但是 HTTPS 比 HTTP 耗费更多服务器资源。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://nevermoreaken.github.io">JMH</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://nevermoreaken.github.io/2022/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%AF%87/">https://nevermoreaken.github.io/2022/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%AF%87/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://nevermoreaken.github.io" target="_blank">Lotus' home</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/http/">http</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/03/Java-IO%E5%B0%8F%E7%BB%93/"><img class="next-cover" src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Java IO小结</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="lv-container" data-id="city" data-uid="MTAyMC81NjcxMi8zMzE3Ng=="></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/25636a15e267c37572f31b4188bf1ee.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">JMH</div><div class="author-info__description">你好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/nEvErMoReaken"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/nEvErMoReaken" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:Mingests@foxmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFHttp%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">什么是Http？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTP-%E5%8D%8F%E8%AE%AE%E9%80%9A%E4%BF%A1%E8%BF%87%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">HTTP 协议通信过程</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HTTPS"><span class="toc-number">3.</span> <span class="toc-text">HTTPS</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%83%8C%E6%99%AF%E2%80%93HTTP%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">3.1.</span> <span class="toc-text">背景–HTTP的缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTPS-%E7%9A%84%E6%A0%B8%E5%BF%83%E2%80%94SSL-x2F-TLS%E5%8D%8F%E8%AE%AE"><span class="toc-number">3.2.</span> <span class="toc-text">HTTPS 的核心—SSL&#x2F;TLS协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL-%E5%92%8C-TLS-%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">3.2.1.</span> <span class="toc-text">SSL 和 TLS 的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SSL-x2F-TLS-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">3.2.2.</span> <span class="toc-text">SSL&#x2F;TLS 的工作原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%A3%E5%88%97%E7%AE%97%E6%B3%95"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">散列算法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">加密算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">3.2.2.2.1.</span> <span class="toc-text">1. 对称加密算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E7%AE%97%E6%B3%95"><span class="toc-number">3.2.2.2.2.</span> <span class="toc-text">2. 非对称加密算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D"><span class="toc-number">3.2.2.2.3.</span> <span class="toc-text">数字签名</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AC%E9%92%A5%E6%95%B0%E5%AD%97%E8%AF%81%E4%B9%A6"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">公钥数字证书</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%86%8D%E5%9B%9E%E5%88%B0%E6%9C%80%E5%BC%80%E5%A7%8B%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="toc-number">3.2.2.3.1.</span> <span class="toc-text">再回到最开始的工作原理</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTTP-vs-HTTPS%E5%8C%BA%E5%88%AB"><span class="toc-number">3.3.</span> <span class="toc-text">HTTP vs HTTPS区别</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%AF%87/" title="计算机网络（应用层篇）"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机网络（应用层篇）"/></a><div class="content"><a class="title" href="/2022/07/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%B1%82%E7%AF%87/" title="计算机网络（应用层篇）">计算机网络（应用层篇）</a><time datetime="2022-07-10T14:31:46.000Z" title="发表于 2022-07-10 22:31:46">2022-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/03/Java-IO%E5%B0%8F%E7%BB%93/" title="Java IO小结"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java IO小结"/></a><div class="content"><a class="title" href="/2022/07/03/Java-IO%E5%B0%8F%E7%BB%93/" title="Java IO小结">Java IO小结</a><time datetime="2022-07-03T13:42:25.000Z" title="发表于 2022-07-03 21:42:25">2022-07-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/01/Java%E9%9B%86%E5%90%88/" title="Java容器原理+高频面试题"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java容器原理+高频面试题"/></a><div class="content"><a class="title" href="/2022/07/01/Java%E9%9B%86%E5%90%88/" title="Java容器原理+高频面试题">Java容器原理+高频面试题</a><time datetime="2022-07-01T09:28:12.000Z" title="发表于 2022-07-01 17:28:12">2022-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/01/%E5%88%9D%E6%8E%A2Serverless/" title="初探Serverless"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/20220701140515.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初探Serverless"/></a><div class="content"><a class="title" href="/2022/07/01/%E5%88%9D%E6%8E%A2Serverless/" title="初探Serverless">初探Serverless</a><time datetime="2022-07-01T06:03:23.000Z" title="发表于 2022-07-01 14:03:23">2022-07-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/01/MarkDawn%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%8A%82%EF%BC%88%E7%BF%BB%E8%AF%91%E8%87%B3MarkText%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%EF%BC%89/" title="MarkDown语法小结"><img src="https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MarkDown语法小结"/></a><div class="content"><a class="title" href="/2022/07/01/MarkDawn%E8%AF%AD%E6%B3%95%E5%B0%8F%E8%8A%82%EF%BC%88%E7%BF%BB%E8%AF%91%E8%87%B3MarkText%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%EF%BC%89/" title="MarkDown语法小结">MarkDown语法小结</a><time datetime="2022-07-01T05:14:48.000Z" title="发表于 2022-07-01 13:14:48">2022-07-01</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/nEvErMoReaken/picodemo/main/img/makima.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By JMH</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Welcome.</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (false){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>function loadLivere () {
+  if (typeof LivereTower === 'object') {
+    window.LivereTower.init()
+  }
+  else {
+    (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+    })(document, 'script');
+  }
+}
+
+if ('Livere' === 'Livere' || !false) {
+  if (false) btf.loadComment(document.getElementById('lv-container'), loadLivere)
+  else loadLivere()
+}
+else {
+  function loadOtherComment () {
+    loadLivere()
+  }
+}</script></div><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["meta[property=\"og:image\"]","meta[property=\"og:title\"]","meta[property=\"og:url\"]","head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
